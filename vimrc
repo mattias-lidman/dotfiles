@@ -57,6 +57,11 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Pytest test runner:
 Plugin 'alfredodeza/pytest.vim'
 
+" Highlight untested Python lines using a coverage report. E.g.:
+" `pip install coverage; coverage run --source <package> -m pytest` to
+" generate `.coverage` file. `:HighlightCoverage` to enable.
+Plugin 'mgedmin/coverage-highlight.vim'
+
 " Autocompletion and other goodness using Jedi (same as IPython):
 Plugin 'davidhalter/jedi-vim'
 let g:jedi#use_splits_not_buffers = "left"
