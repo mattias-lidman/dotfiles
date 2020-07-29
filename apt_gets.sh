@@ -11,6 +11,7 @@ PACKAGES="
     python-pip
     jq
     unzip
+    shellcheck
 "
 
 apt-get update
