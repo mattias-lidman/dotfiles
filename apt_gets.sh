@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
 
 PACKAGES="
-	vim 
-	vim-gtk
+	vim
 	tree
 	htop
-	screen
 	python-dev
-	vagrant
-	synaptic
-	pidgin
 	ctags
 	virtualenv
 	python-pip

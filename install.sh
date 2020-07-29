@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-#Config
-
 git submodule init
 git submodule update
 
@@ -26,12 +24,9 @@ for file in $DOTFILES; do
 	ln -sfT $PWD/$file ~/.$file
 done
 
-mkdir ~/.vim/keymap
-ln -sfT $PWD/keymap/swe-us_utf-8.vim ~/.vim/keymap/swe-us_utf-8.vim
-
+# Run Vundle installs:
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-vim +PluginInstall +qall # Run Vundle installs
+vim +PluginInstall +qall
 
 mkdir ~/.bash_logs # Needed by .bashrc
 source ~/.bashrc
