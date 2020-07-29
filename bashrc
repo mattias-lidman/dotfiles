@@ -102,6 +102,9 @@ alias grp=_grp
 function _grp { grep -r $1 . | awk "length < 200" | grep $1
 }
 
+# aws cli completion:
+complete -C '/usr/local/bin/aws_completer' aws
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.

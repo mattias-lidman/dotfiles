@@ -93,7 +93,11 @@ filetype indent on  " Load filetype specific indent rules
 syntax on           " Enable syntax highlighting
 
 let g:afterglow_inherit_background=1 " Make afterglow play nicely with terminal/tmux
-colorscheme afterglow
+try
+    " try/catch so this won't error on first (setup) run
+    colorscheme afterglow
+catch
+endtry
 
 " Undo/history:
 set undodir=~/.vim/undodir
