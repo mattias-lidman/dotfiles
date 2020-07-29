@@ -7,7 +7,9 @@
 
 # Set up/connect to SSH keyserver, so privkeys only have to be unlocked
 # once per login
-eval $(keychain --eval --quiet)
+if [ "$(uname)" == "Linux" ]; then
+    eval $(keychain --eval --quiet)
+fi
 
 # So CTRL-S won't lock the terminal, and can be used for other purposes:
 stty -ixon
