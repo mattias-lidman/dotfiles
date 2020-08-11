@@ -9,6 +9,7 @@ set nocompatible   " Disable backwards compatibility
 " `:set all` shows current options except terminal.
 " `:set` shows all options that differ from their default value.
 " `:verbose set <thing>?` shows where <thing> was set
+" `:map` to see all mappings
 " <F10> to see highlight group word under cursor belongs to -- for debugging
 " colorshemes and syntax files:
 nmap <silent> <F10>   :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
@@ -42,6 +43,10 @@ let g:ale_lint_delay = 50
 Plugin 'w0rp/ale'
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-m> <Plug>(ale_previous_wrap)
+" For some inexplicable reason mapping ale_previous_map to <C-m> also maps
+" <CR>, which breaks the quickfix window (and probably other stuff as well),
+" so it needs to be unmapped:
+unmap <CR>
 
 " Get current tag (e.g. `class.method`) in status bar:
 Plugin 'mgedmin/taghelper.vim'
@@ -50,6 +55,8 @@ Plugin 'mgedmin/taghelper.vim'
 Plugin 'majutsushi/tagbar'
 " Toggle with CTRL-t:
 nmap <C-t> :TagbarToggle<CR>
+" Sort tags by order in file, not name:
+let g:tagbar_sort = 0
 
 " Consistent navigation between vim and tmux splits using CTRL-<hjkl>
 Plugin 'christoomey/vim-tmux-navigator'
@@ -71,6 +78,14 @@ Plugin 'ervandew/supertab'
 
 " Reopen files at your last edit position:
 Plugin 'farmergreg/vim-lastplace'
+
+" Surround/unsurround text objects (e.g. add/change/remove quotes/tags)
+Plugin 'tpope/vim-surround'
+
+" Makes `.` work with vim-surround and some other plugins. Supporting
+" additional plugs can be done with e.g.:
+" silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+Plugin 'tpope/vim-repeat'
 
 " Fancy replacement for builtin matchit plugin. Additional config for matches below.
 " By default it shows off-screen matches in the status bar. Disable:

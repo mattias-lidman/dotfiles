@@ -20,14 +20,22 @@ movement/selection:
     vib             Select inside parenthesis (exclusive), if inside paren
     <ctrl>o         Go back to previous location
     <ctrl>i         Go forward to next location
-    `.              Go to last insert
+    `.              Go to last insert (Use ctrl-o instead, because it's a stack -- see `:jumps`)
     :g/expr/y A     Yank all lines matching expr into register a. (May need to
                     first empty it, e.g. by recording an empty macro: qaq)
+    gg<cmd>G        Apply <cmd> to entire buffer
 
 macros:
     q               Start recording, followed by <char>, and stops recording
     @<char>         Play macro <char>. Can be preceded by number
     :%norm! @m      Apply macro m to every line of file
+
+quickfix/vimgrep:
+    :vimgrep <p> ** Grep recursively for <p> and put results in quickfix list
+    :copen          Open quickfix window
+
+    `vim -q <file>` read <file> into quickfix buffer. It expects results to be formatted
+    as `<filepath>:<lineno>:<msg>`, e.g. output of `grep -Hn <...>`.
 
 misc:
     :new            New [No Name] buffer
@@ -35,10 +43,13 @@ misc:
     :new|r! ls      Read output of command into new unnamed buffer (also works with tabnew)
     :!rm %          Delete file for current buffer
     S               Delete line and put in insert mode, at the right indentation level
+    g~iw            Toggle case of word under cursor.
+    gUw             Uppercase from cursor end of current word.
 
 split navigation:
     <ctrl>h/j/k/l   Also works for navigating to/from tmux panes
     <ctrl>w r       Rotate splits
+    <ctrl>w =       Resize splits to be equal
 
 jedi-vim:
     <leader>g       goto assignments
@@ -69,6 +80,18 @@ vim-fugitive/vim-gitgutter:
     <leader>hu      Undo hunk under cursor (vim-gitgutter)
     <leader>hs      Stage hunk under cursor (vim-gitgutter)
 
+vim-surround:
+    ysiw`           New surrounding, `iw` is a text object. E.g.: "Hello World!" -> "`Hello` World!"
+    cs<old><new>    Change surrounding, e.g. `cs"<p>` to change "foo" too <p>foo</p>
+    ds<delimiter>   Remove delimiter. E.g. `ds(` to change `(foo)` to `foo`
+    v<movement>S<p> Surround visually selected text with <p></p>. E.g. "foo bar baz" -> "foo <p>bar</p> baz"
+
+    For bracket types ({}, [], (), <>) using the open will add a space and the close will not.
+    E.g. `isiw(` -> `( foo )` and `ysiw)` -> `(foo)`.
+
+    vim-repeat makes `.` work with vim-surround commands.
+
+
 TMUX
 ====
 
@@ -90,6 +113,7 @@ GIT
 git remote show origin      # Show remote info
 git commit -v               # Only commit already staged changes; view changes while editing commit message
 git diff --staged           # Show only changes which have already been staged
+git diff <br> -G<P> --stat  # List files adding <P> compared to <br> e.g. TODOs compared to master
 git show <revhash>          # Show commmit
 git commit -pv              # Interactively select chunks and commit in one go; view changes in commit message.
                             # Option summary:
