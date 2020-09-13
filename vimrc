@@ -192,6 +192,8 @@ endfunction
 set mouse=n         " Use mouse, but only in normal mode.
 set ttymouse=sgr    " Needed for mouse to work with wide (>220 cols) terminals.
 
+let mapleader = "," " Make , <Leader>
+
 " Comment out visual block using ,<comment sign>, uncomment using ,c.
 map ,# :s/^/#/<CR>:nohlsearch<CR>
 map ,/ :s/^/\/\//<CR>:nohlsearch<CR>
