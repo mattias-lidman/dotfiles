@@ -1,0 +1,43 @@
+# Some human-friendlyish AWS CLI shell functions
+
+ec2-describe-instances () {
+    aws ec2 describe-instances\
+        --query 'Reservations[*].Instances[*].{InstanceId:InstanceId,Name:Tags[?Key==`Name`]|[0].Value,State:State.Name,PublicDnsName:PublicDnsName,InstanceType:InstanceType}'\
+        --output table
+}
+
+ec2-describe-images () {
+    aws ec2 describe-images\
+        --owners self\
+        --query 'Images[*].{Architecture:Architecture,CreationDate:CreationDate,ImageId:ImageId,PlatformDetails:PlatformDetails,Name:Name,Description:Description}'\
+        --output table
+}
+
+ec2-active-security-groups () {
+    # Show security groups which are attached to a network interface/instance
+    aws ec2 describe-network-interfaces\
+        --query 'NetworkInterfaces[*].{InstanceId:Attachment.InstanceId,SecurityGroups:Groups}'\
+        --output table
+}
+
+ec2-run-instance () {
+    aws ec2 run-instances\
+        --image-id $1\
+        --instance-type $2\
+        --key-name $3\
+        --security-group-ids $4\
+        --count 1\
+        --output table
+}
+
+ec2-terminate () {
+    aws ec2 terminate-instances --instance-ids $1\
+        --output table
+}
+
+ec2-instance-types () {
+    aws ec2 describe-instance-types\
+        --instance-types t2.micro t2.nano t3a.micro t3a.nano t3a.small t3a.medium\
+        --query 'InstanceTypes[*].{InstanceType:InstanceType,vCPUs:VCpuInfo.DefaultVCpus,Memory:MemoryInfo.SizeInMiB,NetworkPerformance:NetworkInfo.NetworkPerformance,FreeTier:FreeTierEligible}'\
+        --output table
+}

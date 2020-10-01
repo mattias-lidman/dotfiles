@@ -197,3 +197,7 @@ ddg () {
     done
     w3m https://duckduckgo.com/?q=$DDGQUERY
 }
+
+if [ -f ~/.aws_shorthands ]; then
+    . ~/.aws_shorthands
+fi

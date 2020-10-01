@@ -207,8 +207,8 @@ map ,c :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>:nohlsearch<CR>
 
 " Make Y behave like other capitals -- yank rest of line:
 map Y y$
-" P pastes to new line, even if register doesn't have a newline char:
-nmap P :pu<CR>
+" <Leader>p pastes to new line, even if register doesn't have a newline char:
+nmap <Leader>p :pu<CR>
 
 " Set up statusline:
 function! GitStatus()

@@ -13,6 +13,8 @@ DOTFILES="
     bash_profile
     psqlrc
     inputrc
+    aws_shorthands
+    zshrc
 "
 
 
@@ -21,7 +23,11 @@ cd $(dirname $0)
 
 for file in $DOTFILES; do
 	echo "Linking $file"
-	ln -sfT $PWD/$file ~/.$file
+    if [ "$(uname)" == "Darwin" ]; then
+	    ln -sf $PWD/$file ~/.$file
+    else
+        ln -sfT $PWD/$file ~/.$file
+    fi
 done
 
 # Run Vundle installs:
