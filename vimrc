@@ -123,7 +123,10 @@ set history=500     " Command-line history; default 50
 set expandtab       " Expand <Tab> to spaces in insert mode. CTRL-V<Tab> forces real tab
 set tabstop=4       " <Tab> == 4 spaces
 set softtabstop=4   " Treat 4 spaces as a tab for BACKSPACE and DELETE
+set shiftwidth=0    " 0 = default to `tabstop` value
 set autoindent      " Auto-indent reasonably for filetypes without specific indentation rules
+" File type specific tab settings
+autocmd FileType javascript setlocal tabstop=2 softtabstop=2
 
 set backspace=indent,eol,start " Make backspace behave normally in insert mode
 
