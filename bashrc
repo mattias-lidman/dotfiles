@@ -201,3 +201,5 @@ ddg () {
 if [ -f ~/.aws_shorthands ]; then
     . ~/.aws_shorthands
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

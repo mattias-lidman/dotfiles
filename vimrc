@@ -1,4 +1,5 @@
 set nocompatible   " Disable backwards compatibility
+set nofixendofline " Don't spam diffs by inserting trailing newlines
 " Notes on tracking down inexplicable behavior, e.g. when a new Vim version
 " adds a default plugin which interferes with something:
 "
@@ -40,6 +41,7 @@ hi ALEWarningSign ctermbg=black
 " g:ale_lint_delay is #ms after typing stops before linter is run. Default 200.
 " May be a performance hog.
 let g:ale_lint_delay = 50
+let b:ale_fixers = {'python': ['autopep8']}
 Plugin 'w0rp/ale'
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <silent> <C-m> <Plug>(ale_previous_wrap)
@@ -82,6 +84,8 @@ Plugin 'farmergreg/vim-lastplace'
 " Surround/unsurround text objects (e.g. add/change/remove quotes/tags)
 Plugin 'tpope/vim-surround'
 
+Plugin 'michaeljsmith/vim-indent-object'
+
 " Makes `.` work with vim-surround and some other plugins. Supporting
 " additional plugs can be done with e.g.:
 " silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
@@ -98,6 +102,11 @@ Plugin 'andymass/vim-matchup'
 
 " Colorsheme packs:
 Plugin 'danilo-augusto/vim-afterglow'
+
+Plugin 'preservim/nerdtree'
+" Adds filetype glyphs to NERDTree and other plugins; needs to be loaded last;
+" needs a compatible font from https://github.com/ryanoasis/nerd-fonts
+Plugin 'ryanoasis/vim-devicons'
 
 call vundle#end()   " Required -- all Plugins must be added before this line
 filetype on         " Re-enable filetype detection; syntax highlighting, options, etc.

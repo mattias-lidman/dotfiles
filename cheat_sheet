@@ -9,8 +9,9 @@ movement/selection:
     b               Go back one word
     ^               First non white-space char (e.g `d^` deletes from cursor to indentation)
     {/}             Move up/down a paragraph
-    <ctrl>e         Move screen down one line without moving cursor
-    <ctrl>y         Move screen up one line without moving cursor
+    <ctrl>e/y       Move screen down/up one line without moving cursor
+    <ctrl>u/d       Scroll half screen up/down, or prefix _n_ lines.
+    zt / zb         Move current line to top/bottom of screen.
     v/<term>        Mark forward from cursor to <term>
     v?<term>        Mark backward from cursor to <term>
     '[a-z]          Go to mark a-z, set by m[a-z]
@@ -24,6 +25,7 @@ movement/selection:
     :g/expr/y A     Yank all lines matching expr into register a. (May need to
                     first empty it, e.g. by recording an empty macro: qaq)
     gg<cmd>G        Apply <cmd> to entire buffer
+
 
 macros:
     q               Start recording, followed by <char>, and stops recording
@@ -50,6 +52,7 @@ split navigation:
     <ctrl>h/j/k/l   Also works for navigating to/from tmux panes
     <ctrl>w r       Rotate splits
     <ctrl>w =       Resize splits to be equal
+    <ctrl>w T       Make current split a new tab
 
 jedi-vim:
     <leader>g       goto assignments
@@ -107,6 +110,12 @@ split panes:
     <prefix>"       Horizontal split
     <prefix>%       Vertical split
 
+iTerm2
+======
+
+opt+<click-drag>            Discontinuous selections
+cmd+opt+<click-drag>        Rectangular selection
+
 GIT
 ===
 
@@ -131,3 +140,9 @@ git commit -pv              # Interactively select chunks and commit in one go; 
                             #   s - split the current hunk into smaller hunks
                             #   e - manually edit the current hunk
                             #   ? - print help
+
+
+MISC SHELL STUFF
+================
+
+du -d 1 -h | sort -h        # More useful disk usage overview
