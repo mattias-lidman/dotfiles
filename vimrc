@@ -108,6 +108,8 @@ Plugin 'preservim/nerdtree'
 " needs a compatible font from https://github.com/ryanoasis/nerd-fonts
 Plugin 'ryanoasis/vim-devicons'
 
+Plugin 'vimwiki/vimwiki'
+
 call vundle#end()   " Required -- all Plugins must be added before this line
 filetype on         " Re-enable filetype detection; syntax highlighting, options, etc.
                     " (all `FileType` configs must come after this)
