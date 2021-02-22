@@ -54,11 +54,15 @@ split navigation:
     <ctrl>w =       Resize splits to be equal
     <ctrl>w T       Make current split a new tab
 
+file navigation:
+    gf              Go to filename under cursor
+    <ctrl>^         Return to alternate (usually previous) file
+
 jedi-vim:
     <leader>g       goto assignments
     <leader>d       goto definitions
     K               Show documentation
-    <leader>r       Renaming (seems broken: https://github.com/davidhalter/jedi-vim/issues/253)
+    <leader>r       Renaming
     <leader>n       Show all usages of a name
     :Pyimport       Open module (e.g. :Pyimport os) -- mostly doesn't work...
 

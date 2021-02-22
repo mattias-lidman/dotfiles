@@ -26,6 +26,7 @@ ec2-run-instance () {
         --instance-type $2\
         --key-name $3\
         --security-group-ids $4\
+        --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$5}]"\
         --count 1\
         --output table
 }

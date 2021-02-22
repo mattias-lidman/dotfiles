@@ -1,12 +1,13 @@
 # History
 export HISTFILE=~/.zsh_history
-export HISTFILESIZE=100000000
+export HISTFILESIZE=100000000 # Max number of lines
 export HISTSIZE=100000
-export SAVEHIST=50000 # > HISTSIZE to give HIST_EXPIRE_DUPS_FIRST some cuhsion
-setopt HIST_EXPIRE_DUPS_FIRST
+export SAVEHIST=50000 # < HISTSIZE to give HIST_EXPIRE_DUPS_FIRST some cushion
+setopt HIST_EXPIRE_DUPS_FIRST # Trim oldest duplicates first
 setopt INC_APPEND_HISTORY # Immediate append; don't lose history on unclean exit
 export HISTTIMEFORMAT="[%F %T] "
 setopt EXTENDED_HISTORY # Format: `: <beginning time>:<elapsed seconds>;<command>'
+setopt HIST_IGNORE_SPACE # Don't record commands with leading space
 
 # Enable completion:
 autoload -Uz compinit && compinit
@@ -33,7 +34,7 @@ case `uname` in
 	alias ll='ls -laG'
   ;;
   Linux)
-    # commands for Linux go here
+	alias ll='ls -la --color'
   ;;
 esac
 
@@ -55,3 +56,8 @@ export PATH=~/bin:$PATH
 
 [ -f ~/.localzshrc ] && source ~/.localzshrc  # Anything specific to a particular host
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+fi

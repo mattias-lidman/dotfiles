@@ -104,6 +104,7 @@ Plugin 'andymass/vim-matchup'
 Plugin 'danilo-augusto/vim-afterglow'
 
 Plugin 'preservim/nerdtree'
+let NERDTreeShowHidden=1 " Show .files
 " Adds filetype glyphs to NERDTree and other plugins; needs to be loaded last;
 " needs a compatible font from https://github.com/ryanoasis/nerd-fonts
 Plugin 'ryanoasis/vim-devicons'
@@ -223,6 +224,58 @@ map ,c :s/^\/\/\\|^--\\|^> \\|^[#"%!;]//<CR>:nohlsearch<CR>
 map Y y$
 " <Leader>p pastes to new line, even if register doesn't have a newline char:
 nmap <Leader>p :pu<CR>
+
+" Switch to Swedish
+function! SweType()
+  set spelllang=sv
+  inoremap ; ö
+  inoremap ;; ;
+  inoremap : Ö
+  inoremap :: :
+  inoremap [ å
+  inoremap { Å
+  inoremap ' ä
+  inoremap '' '
+  inoremap " Ä
+  inoremap "" "
+  inoremap [[ [
+  inoremap {{ {
+endfunction
+nmap <Leader>s :<C-U>call SweType()<CR>
+
+" Switch back to English
+function! EngType()
+  set spelllang=en_us
+  inoremap ; ;
+  iunmap ;;
+  inoremap : :
+  iunmap ::
+  inoremap [ [
+  iunmap [[
+  inoremap { {
+  iunmap {{
+  inoremap ' '
+  iunmap ''
+  inoremap " "
+  iunmap ""
+endfunction
+nmap <Leader>e :<C-U>call EngType()<CR>
+
+" Automatically reformat paragraphs as you type
+function! Prose()
+    " formatoptions:
+    " `t` makes text wrap on `textwidth`
+    " `a` turns on real-time reformatting
+    " `n` to recognize lists
+    setlocal formatoptions=antcq
+    setlocal textwidth=80
+    setlocal wrapmargin=0
+    setlocal nonumber
+    setlocal foldcolumn=10
+	" Make `n` formatoption also recognize bullet (- or *) lists
+    let &formatlistpat='^\s*\(\d\+[\]:.)}\t ]\|[*-][\t ]\)\s*'
+endfunction
+
 
 " Set up statusline:
 function! GitStatus()
