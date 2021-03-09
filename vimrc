@@ -110,6 +110,7 @@ let NERDTreeShowHidden=1 " Show .files
 Plugin 'ryanoasis/vim-devicons'
 
 Plugin 'vimwiki/vimwiki'
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 
 call vundle#end()   " Required -- all Plugins must be added before this line
 filetype on         " Re-enable filetype detection; syntax highlighting, options, etc.
