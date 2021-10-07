@@ -180,9 +180,16 @@ located in `~/.viminfo`. Disable by starting a session with `vim -i NONE`.
 - `git reset HEAD~`: Undo most recent commit, leaving state of files on disk
   untouched.
 
+## jq
+
+- `jq 'keys'`: Top-level keys.
+- `jq '.results | length'`: Count items in subscripted array.
+
 ## Misc shell stuff
 
 - `du -d 1 -h | sort -h`: More useful disk usage overview.
+- `date -r`: Timestamp to human-friendly string.
+- `diff <(cmd1) <(cmd2)`: Diff output of two commands.
 
 ## macOS
 

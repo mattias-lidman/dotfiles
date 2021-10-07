@@ -33,6 +33,11 @@ set updatetime=100
 " Git wrapper -- see cheat sheet:
 Plugin 'tpope/vim-fugitive'
 
+" Open current file in Github with `:OpenFileGithub`. Mark specific lines with
+" visual selection.
+Plugin 'tyru/open-browser.vim'
+Plugin 'tyru/open-browser-github.vim'
+
 " Asynchronous Lint Engine -- acts as an LSP client
 let g:ale_sign_error = '☠️' " Is the world finally ready for unicode in the terminal...?
 hi ALEErrorSign ctermbg=black
@@ -73,7 +78,7 @@ Plugin 'mgedmin/coverage-highlight.vim'
 
 " Autocompletion and other goodness using Jedi (same as IPython):
 Plugin 'davidhalter/jedi-vim'
-let g:jedi#use_splits_not_buffers = "left"
+let g:jedi#use_splits_not_buffers = "disable"
 
 " Do autocompletion using <Tab>:
 Plugin 'ervandew/supertab'
@@ -105,12 +110,17 @@ Plugin 'danilo-augusto/vim-afterglow'
 
 Plugin 'preservim/nerdtree'
 let NERDTreeShowHidden=1 " Show .files
+set wildignore+=*.pyc,*.swp,*.swo,*.class,*.DS_Store
+let NERDTreeRespectWildIgnore=1
 " Adds filetype glyphs to NERDTree and other plugins; needs to be loaded last;
 " needs a compatible font from https://github.com/ryanoasis/nerd-fonts
 Plugin 'ryanoasis/vim-devicons'
 
 Plugin 'vimwiki/vimwiki'
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()   " Required -- all Plugins must be added before this line
 filetype on         " Re-enable filetype detection; syntax highlighting, options, etc.

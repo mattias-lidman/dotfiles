@@ -1,3 +1,5 @@
+export EDITOR=vim
+
 # History:
 export HISTFILE=~/.zsh_history
 export HISTFILESIZE=100000000 # Max number of lines
