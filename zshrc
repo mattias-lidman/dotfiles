@@ -51,6 +51,7 @@ esac
 # Misc. external commands:
 source $HOME/.aws_shorthands
 export PATH=~/bin:$PATH # Home directory binaries
+export PATH="/opt/nvim/bin:$PATH"
 
 [ -f ~/.localzshrc ] && source ~/.localzshrc # Anything specific to a particular host
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

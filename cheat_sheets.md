@@ -204,7 +204,52 @@ Several of these are set in System Preferences -> Keyboard -> Shortcuts.
 - `^⌘→` / `^⌘←`: Move window to right/left side of screen.
 - `^⌥⌘→` / `^⌥⌘←`: Tile window to right/left side of screen.
 
+### Finder / Quick Look
+
+- `⌥+Space`: Open Quick Look in fullscreen.
+- `⌥+Return`: View index sheet in Quick Look, with multiple files selected in Finder.
+
+
 ### iTerm2
 
 - `⌥⌘ + <click-drag>`: Rectangular selection.
 - `⌥ + <click-drag>`: Discontinuous selections. (Doesn't work in tmux?)
+
+### Capture One 20
+
+- Rating:
+    - `0`-`5`: Assign star rating.
+    - `⌘1`-`⌘5`: Toggle star rating filter.
+- View:
+    - `G`: Show/hide viewer.
+    - `⌘T`: Show/hide tools.
+    - `⌘B`: Show/hide browser.
+    - `⌘E`: Exposure warning.
+    - `Y`: Before/after.
+    - Zoom:
+        - `⌘+`/`⌘-`: Zoom in/out.
+        - `,`: Zoom to fit.
+        - `.`: Zoom to 100%.
+        - `⌘.`: Zoom to 400%.
+- `⌥⌘1`-`⌥⌘0`: Select tool tab.
+- Cursor tools:
+    - Click and hold to reveal sub-tools...
+    - `H`: Pan (hand).
+    - `P`: Loupe.
+    - `C`: Crop.
+    - `R`: Straighten/rotate.
+    - `K`: Keystone.
+    - `O`: Spot removal.
+    - `Q`: Healing mask. Creates new/selects heal layer.
+    - `S`: Cloning mask. Creates new/selects clone layer.
+    - `L`: Draw linear gradient mask. Creates new/selects adjustment layer.
+    - `T`: Draw radial gradient mask. Creates new/selects adjustment layer.
+- Adjustments:
+    - `⌘L`: Auto adjust.
+    - `⌘R`: Reset adjustments.
+    - `⇧⌘C`: Copy adjustments.
+    - `⇧⌘V`: Apply adjustments.
+
+### Garage Band
+
+- `⌘K`: Show/hide on-screen keyboard.
